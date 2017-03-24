@@ -22,7 +22,7 @@
 	faceApp.controller('faceController', function FaceController($scope, $timeout, $interval) {
 		$scope.face = {
 			img: 1,
-			init: function () {
+			init: function () { 
 				$timeout(this.setUpdateInterval, this.getMillisecondsToNextHour());
 			},
 			getMillisecondsToNextHour: function() { return (60 - new Date().getMinutes()) * 60000; },
