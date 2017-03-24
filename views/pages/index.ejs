@@ -23,22 +23,18 @@
 		$scope.face = {
 			img: 1,
 			init: function () {
-				$timeout(this.setUpdateInterval, getMillisecondsToNextHour());
+				$timeout(this.setUpdateInterval, this.getMillisecondsToNextHour());
 			},
 			getMillisecondsToNextHour: function() { return (60 - new Date().getMinutes()) * 60000; },
 			setUpdateInterval: function() {
 				$scope.updateImage();
 				$interval($scope.updateImage, 1000 * 60 * 60);
-			}			
+			}
 		};
-		
+
 		$scope.updateImage = function() {
-				if ($scope.face.img == 5)
-				{
-				$scope.face.img = 1;
-				} else {
-				$scope.face.img = $scope.face.img + 1;
-				}
+				hours = new Date().getHours();
+				$scope.face.img = hours > 12 ? hours - 12 : hours;
 			};
 	});
 </script>
