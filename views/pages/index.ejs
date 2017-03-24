@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="faceApp">
+<head>
+	<meta charset="utf-8">
+	<title>FACE!</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body ng-controller="faceController" ng-init="face.init()">
+
+<div>
+	<img src="{{face.img}}.jpg" />
+</div>
+
+</body>
+</html>
+
+<script>
+	// Define the `phonecatApp` module
+	var faceApp = angular.module('faceApp', []);
+
+	// Define the `faceController` controller on the `faceApp` module
+	faceApp.controller('faceController', function FaceController($scope, $timeout, $interval) {
+		$scope.face = {
+			img: 1,
+			init: function () {
+				$timeout(this.setUpdateInterval, getMillisecondsToNextHour());
+			},
+			getMillisecondsToNextHour: function() { return (60 - new Date().getMinutes()) * 60000; },
+			setUpdateInterval: function() {
+				$scope.updateImage();
+				$interval($scope.updateImage, 1000 * 60 * 60);
+			}			
+		};
+		
+		$scope.updateImage = function() {
+				if ($scope.face.img == 5)
+				{
+				$scope.face.img = 1;
+				} else {
+				$scope.face.img = $scope.face.img + 1;
+				}
+			};
+	});
+</script>
