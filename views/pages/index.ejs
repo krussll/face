@@ -4,21 +4,28 @@
 		<meta charset="utf-8">
 		<title>FACE!</title>
 		<style>
+			div.wrapper {
+				position: relative;
+				width: 450px;
+			}
+
 			img.russell {
-				float: right; 
-				width: 100px; 
-				height: 100px;
+				position: absolute;
+			}
+
+			img#second-russell {
+				right: 0px;
 			}
 		</style>
 	</head>
 	<body ng-controller="faceController" ng-init="face.init()">
-		<div>
+		<div class="wrapper">
 			<img class="russell" id="second-russell" src="russell.png" />
 			<img class="russell" id="minute-russell" src="russell.png" />
+			<img src="{{face.img}}.jpg" />
 		</div>
 
 		<div>
-			<img src="{{face.img}}.jpg" />
 		</div>
 
 	</body>
