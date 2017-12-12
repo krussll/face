@@ -10,7 +10,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ejs": "2.4.1",
+    "ejs": "2.5.5",
     "express": "4.13.3",    
     "node-random-name": "^1.0.1",
     "puppeteer": "^0.13.0"
